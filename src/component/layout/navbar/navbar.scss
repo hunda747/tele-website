@@ -1,0 +1,94 @@
+@import "../../../styles/variables.scss";
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  // .wrapper {
+
+  .break {
+    width: 100%;
+    border-bottom: 1px solid rgb(227, 227, 227);
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      .social {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        gap: 0.5rem;
+
+        .icon {
+          color: $darkBlue;
+        }
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      img {
+        width: 100%;
+        height: 50px;
+        // width: 250px;
+        // height: 100%;
+      }
+    }
+    .right {
+      .menus {
+        display: flex;
+        justify-content: right;
+        gap: 2rem;
+
+        li {
+          text-transform: capitalize;
+        }
+
+        .nav_menu {
+          display: inline-block;
+          position: relative;
+
+          &:hover {
+            background-color: blue;
+
+            .nav__submenu {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  // }
+}
+
+.nav__submenu {
+  font-weight: 300;
+  text-transform: none;
+  display: none;
+  position: absolute;
+  width: 50px;
+  background-color: blue;
+}

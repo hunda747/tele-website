@@ -1,0 +1,78 @@
+// @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;0,700;0,800;1,100;1,300;1,500;1,700&family=:ital,wght@0,100;0,700;1,100;1,300;1,400;1,500&display=swap");
+
+// $Poppins: "Poppins", sans-serif;
+
+$HEADINGS: "Gotham Bold", sans-serif;
+$bodyText: "Open Sans", sans-serif;
+//colors
+$dark: #000000;
+$light: #bbbbbb;
+$primary: #8ac43f;
+$bg: rgb(244, 244, 255);
+$blue: #13aff0;
+$darkBlue: #0072ab;
+// $main: rgb(255 219 0);
+
+//spacing
+
+$spacing-md: 12px;
+$spacing-lg: 32px;
+
+$lightBlue: #ecfdff;
+$textColor: #00adef;
+$secondaryTextColor: #74a4f8;
+// $primary: #01adf1;
+$grey: rgb(232, 232, 232);
+$lightGrey: rgb(241, 241, 241);
+// $main: rgb(255 219 0);
+
+//spacing
+$spacing-md: 12px;
+$spacing-lg: 32px;
+
+//border radius
+$borderRadius: 12px;
+
+//header height
+$headerHeight: 50px;
+
+//laptop wrapper padding
+$fullPadding: 5rem;
+$mobilePadding: 1.5rem;
+
+//fonts
+$sm-tl: 25px;
+$md-tl: 30px;
+$lg-tl: 35px;
+
+//restaurant card width
+$restCardWidth: 345px;
+
+//mix
+
+@mixin breakpoint($point) {
+  @if $point == sm {
+    //480px
+    @media (min-width: 480px) {
+      @content;
+    }
+  }
+
+  @if $point == md {
+    // 768px
+    @media (min-width: 780px) {
+      @content;
+    }
+  }
+  @if $point == mdP {
+    @media (min-width: 920px) {
+      @content;
+    }
+  }
+  @if $point == lg {
+    // 1080px
+    @media (min-width: 1080px) {
+      @content;
+    }
+  }
+}
