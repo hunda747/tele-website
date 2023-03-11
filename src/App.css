@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
 .App {
   text-align: center;
 }
@@ -14,6 +16,28 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .wrapper {
   padding: 0.3rem 5rem;
+}
+.wrapperBig {
+  padding: 0.3rem 5rem;
+}
+
+.headerTitle {
+  text-align: center;
+  font-size: 26px;
+  margin: 2rem;
+  font-family: "DM Sans", sans-serif;
+  text-transform: uppercase;
+}
+.headerTitle span {
+  color: #0072bc;
+}
+
+.colortext {
+  color: #0072bc;
 }

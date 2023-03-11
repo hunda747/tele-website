@@ -1,0 +1,106 @@
+@import "../../../styles/variables.scss";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  ul {
+    list-style: none;
+    list-style-type: none;
+  }
+  li {
+    list-style: none;
+    list-style-type: none;
+  }
+
+  .top {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 1.5rem;
+
+    .section {
+      h3 {
+        font-size: 16px;
+        color: $darkBlue;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        gap: 0.8rem;
+        li {
+          font-size: 14px;
+          color: #7a7a7a;
+          opacity: 0.9;
+          cursor: pointer;
+        }
+        li:hover {
+          color: $darkBlue;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+
+    .left {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      gap: 2rem;
+      width: 50%;
+
+      .social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        .icon {
+          color: $darkBlue;
+          font-size: small;
+        }
+        span {
+          font-size: 14px;
+          color: #7a7a7a;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .right {
+      width: 50%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      gap: 2rem;
+
+      .text {
+        color: #7a7a7a;
+        opacity: 0.9;
+      }
+      .media {
+        display: flex;
+        justify-content: left;
+        gap: 1rem;
+
+        div {
+          color: $primary;
+          // color: $darkBlue;
+        }
+      }
+    }
+
+    .bottom {
+      p {
+        color: #7a7a7a;
+        opacity: 0.9;
+      }
+    }
+  }
+}

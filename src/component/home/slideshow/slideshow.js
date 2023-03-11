@@ -3,7 +3,7 @@ import "./slideshow.css";
 
 import home1 from "../../../assets/photo/slide3.webp";
 import home2 from "../../../assets/photo/slide4.webp";
-
+import useSlider from "../../../hooks/useSliderImage";
 import {
   NavigateBeforeRounded,
   NavigateNextRounded,
@@ -39,12 +39,21 @@ export const Slideshow = () => {
   const [index, setIndex] = React.useState(0);
   const timeoutRef = React.useRef(null);
 
+  const [slide, setSlides] = React.useState([]);
+  const { getSlider } = useSlider();
+
   function resetTimeout() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
   }
 
+  React.useEffect(() => {
+    // getSlider();
+    getSlider().then((response) => response && setSlides(response));
+  }, []);
+  console.log(slide);
+  console.log(slide.sanitizedEntries);
   React.useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(() => handleNext(), delay);
@@ -79,12 +88,12 @@ export const Slideshow = () => {
           height: "100%",
         }}
       >
-        {slideData.map((slide, index) => (
+        {slide?.sanitizedEntries?.map((slide, index) => (
           <div className="slide" key={index}>
-            <img src={slide.photo} />
+            <img src={slide.image} />
             <div className="text">
               <h2>{slide.title}</h2>
-              <p>{slide.message}</p>
+              <p>{slide.description}</p>
               {/* <button>Donate</button> */}
               {/* <a href={`/campaign/${slide.id}`}>See campaign</a>
               <div className="arrows">

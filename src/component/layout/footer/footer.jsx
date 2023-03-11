@@ -1,6 +1,18 @@
 import React from "react";
 import "./footer.scss";
 
+import {
+  Phone,
+  FmdGood,
+  Sms,
+  Email,
+  Telegram,
+  Facebook,
+  Twitter,
+  Shop,
+  Search,
+} from "@mui/icons-material";
+
 export default function Footer(params) {
   const lists = [
     {
@@ -92,12 +104,54 @@ export default function Footer(params) {
             return (
               <div className="section">
                 <h3>{list.name}</h3>
-                {list.list.map((li, index) => {
-                  return <li key={index}>{li}</li>;
-                })}
+                <ul>
+                  {list.list.map((li, index) => {
+                    return <li>{li}</li>;
+                  })}
+                </ul>
               </div>
             );
           })}
+        </div>
+        <div className="middle">
+          <div className="left">
+            <div className="social">
+              <div className="icon">
+                <Phone />
+              </div>
+              <span>+251-994/+251-980</span>
+            </div>
+            <div className="social">
+              <div className="icon">
+                <Email />
+              </div>
+              <span>994@ethionet.et</span>
+            </div>
+            <div className="social">
+              <div className="icon">
+                {" "}
+                <Sms />{" "}
+              </div>
+              <span>8994</span>
+            </div>{" "}
+          </div>
+          <div className="right">
+            <div className="text">Follow Us:</div>
+            <div className="media">
+              <div>
+                <Facebook />
+              </div>
+              <div>
+                <Twitter />
+              </div>
+              <div>
+                <Telegram />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bottom">
+          <p>Copyright 1894 - 2023 © Ethio telecom. All Rights Reserved.</p>
         </div>
       </div>
     </div>
