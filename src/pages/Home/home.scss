@@ -8,60 +8,86 @@
 .home {
   .products {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 4rem;
-    padding: 1rem 5rem;
+    padding: 2rem 5rem;
     // background-color: $primary;
 
     .card {
+      font-family: $family;
+      cursor: pointer;
+      transition: transform 2s ease;
+      border-radius: 1rem;
       display: flex;
       flex-direction: column;
       gap: 1rem;
       justify-content: center;
       align-items: center;
       text-align: center;
-
       // color: white;
-
-      padding: 1rem;
+      padding: 1rem 1rem;
       // background-color: white;
       // background-color: $primary;
       width: 150px;
-      height: 80px;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      height: 120px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
       .icon {
         font-size: x-large;
-        transform: scale(2);
+        // transform: scale(2);
+        color: $darkBlue;
+      }
+      span {
+        font-size: 20px;
+      }
+    }
+    .card:hover {
+      color: white;
+      transition: transform 2s ease;
+      background-color: $darkBlue;
+
+      .icon {
+        color: white;
       }
     }
   }
 
   .service {
-    padding: 1rem;
+    padding: 1rem 5rem;
     max-width: 100%;
     overflow: hidden;
     h2 {
-      text-align: center;
-      margin: 2rem 0;
-      padding: 1rem 3rem;
+      // text-align: left;
+      // margin: 2rem 0;
+      // padding: 1rem 3rem;
       // background-color: $primary;
-      color: $primary;
-      font-size: 32px;
-      margin: 5px 0;
+      // color: $primary;
+      // font-size: 32px;
+      // margin: 5px 0;
     }
     .images {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       gap: 2rem;
       align-items: center;
       width: 100%;
 
-      img {
+      div {
         width: 100%;
-        border-radius: 20px;
+        transform-origin: 0 0;
+        transition: transform 0.25s, visibility 2s ease-in;
+
+        img {
+          width: 100%;
+          // border-radius: 20px;
+          overflow: hidden;
+        }
+        img:hover {
+          // transform: scale(1.1);
+        }
       }
     }
   }
@@ -70,6 +96,7 @@
     h2 {
       margin: 0;
       margin-bottom: 1rem;
+      color: $darkBlue;
     }
     background-color: $primary;
     margin: 2rem 0;
@@ -77,6 +104,7 @@
     font-family: "DM Sans", sans-serif;
     .stats {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 6rem;
 
@@ -116,11 +144,22 @@
 
       .testimonials {
         display: flex;
+        flex-direction: column;
+        // flex-wrap: wrap;
         justify-content: center;
-        gap: 4rem;
+
+        @include breakpoint(mdP) {
+          flex-direction: row;
+          gap: 4rem;
+        }
 
         .testimony {
+          // min-width: 100%;
           width: 100%;
+
+          @include breakpoint(mdP) {
+            max-width: 100%;
+          }
           // background-color: $primary;
           padding: 1rem 2rem;
           text-align: center;
@@ -137,9 +176,28 @@
             font-size: 16px;
           }
           .name {
-            font-size: 18px;
-            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            img {
+              height: 50px;
+              width: 50px;
+              object-fit: cover;
+              border-radius: 100%;
+            }
+            h3 {
+              font-size: 18px;
+              font-weight: bold;
+            }
           }
+        }
+        .testimony:hover {
+          // box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+          //   rgba(0, 0, 0, 0.22) 0px 15px 12px;
+          box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+            rgba(0, 0, 0, 0.23) 0px 6px 6px;
+          font-weight: bold;
         }
       }
     }

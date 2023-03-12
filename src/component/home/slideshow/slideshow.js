@@ -4,6 +4,7 @@ import "./slideshow.css";
 import home1 from "../../../assets/photo/slide3.webp";
 import home2 from "../../../assets/photo/slide4.webp";
 import useSlider from "../../../hooks/useSliderImage";
+import useHero from "../../../hooks/useHero";
 import {
   NavigateBeforeRounded,
   NavigateNextRounded,
@@ -41,6 +42,7 @@ export const Slideshow = () => {
 
   const [slide, setSlides] = React.useState([]);
   const { getSlider } = useSlider();
+  const { getHeros } = useHero();
 
   function resetTimeout() {
     if (timeoutRef.current) {
@@ -49,10 +51,10 @@ export const Slideshow = () => {
   }
 
   React.useEffect(() => {
-    // getSlider();
-    getSlider().then((response) => response && setSlides(response));
+    getHeros().then((response) => response && setSlides(response));
+    // getHeros();
   }, []);
-  console.log(slide);
+  // console.log(slide);
   console.log(slide.sanitizedEntries);
   React.useEffect(() => {
     resetTimeout();

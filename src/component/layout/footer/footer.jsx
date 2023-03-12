@@ -98,7 +98,7 @@ export default function Footer(params) {
 
   return (
     <div className="footer">
-      <div className="wrapper">
+      <div className="">
         <div className="top">
           {lists.map((list, index) => {
             return (

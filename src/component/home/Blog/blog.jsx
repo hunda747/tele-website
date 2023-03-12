@@ -6,6 +6,7 @@ import blog2 from "../../../assets/photo/blog2.webp";
 
 import useContentful from "../../../hooks/useContentful";
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
+import { useNavigate } from "react-router-dom";
 
 export default function Blog(params) {
   const [blogs, setBlogs] = useState([]);
@@ -15,6 +16,7 @@ export default function Blog(params) {
     getBlogs().then((response) => response && setBlogs(response));
     // getAuthors().then((response) => response && setAuthors(response));
   }, []);
+  const navigate = useNavigate();
   const story = [
     {
       id: 0,
@@ -40,6 +42,7 @@ export default function Blog(params) {
       image: blog1,
     },
   ];
+
   const len = 150;
   const showLess = (desc) => {
     return desc ? desc.substring(0, len) + "...." : "";
@@ -51,12 +54,13 @@ export default function Blog(params) {
   return (
     <div className="blog">
       <div className="wrapper">
-        <h2 className="headerTitle">
+        {/* <h2 className="headerTitle">
           Latest <span>News</span>{" "}
-        </h2>
+        </h2> */}
         <div className="cards">
           <div className="menu">
-            {blogs?.sanitizedEntries?.map((sto) => {
+            <h2>Latest News</h2>
+            {blogs?.sanitizedEntries?.slice(0, 4).map((sto) => {
               const date = new Date(sto.date);
               return (
                 <div className="story">
@@ -68,12 +72,17 @@ export default function Blog(params) {
           </div>
           {!blogs?.sanitizedEntries
             ? ""
-            : blogs?.sanitizedEntries.slice(0, 2).map((sto) => {
+            : blogs?.sanitizedEntries.slice(0, 2).map((sto, index) => {
                 const date = new Date(sto.date);
                 // console.log(date);
-                console.log(date.toDateString());
+                // console.log(date.toDateString());
                 return (
-                  <div className="card">
+                  <div
+                    className="card"
+                    onClick={() => {
+                      navigate(`/blog/${index}`);
+                    }}
+                  >
                     <img src={sto.image} alt="" />
                     <h3>{sto.title}</h3>
                     <p className="date">{date.toDateString()}</p>

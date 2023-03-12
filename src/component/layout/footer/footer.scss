@@ -16,8 +16,15 @@
   .top {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: start;
-    gap: 1.5rem;
+    gap: 2rem;
+    padding: 1rem 2rem;
+
+    @include breakpoint(mdP) {
+      flex-direction: row;
+      padding: 0;
+    }
 
     .section {
       h3 {
@@ -45,9 +52,17 @@
 
   .middle {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 1rem;
+
+    @include breakpoint(mdP) {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+    }
 
     .left {
       display: flex;
@@ -76,9 +91,13 @@
     .right {
       width: 50%;
       display: flex;
-      justify-content: left;
+      justify-content: center;
       align-items: center;
       gap: 2rem;
+
+      @include breakpoint(mdP) {
+        justify-content: left;
+      }
 
       .text {
         color: #7a7a7a;
@@ -102,5 +121,11 @@
         opacity: 0.9;
       }
     }
+  }
+
+  .bottom {
+    margin-top: 1rem;
+    border-top: 1px solid rgb(182, 182, 182);
+    padding: 0 5rem;
   }
 }

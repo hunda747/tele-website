@@ -27,7 +27,7 @@ const useSlider = () => {
       return { sanitizedEntries };
       // return { sanitizedEntries };
     } catch (error) {
-      console.log(`Error fetching  ${error}`);
+      console.log(`Error fetching slide  ${error}`);
     }
   };
 

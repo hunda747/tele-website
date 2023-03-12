@@ -18,17 +18,30 @@ export default function Images(params) {
   }, []);
 
   return (
-    <div>
+    <div className="community">
+      <div className="header">
+        <h2 className="headerTitle">
+          CORPORATE <span>SOCIAL</span> RESPONSIBILITY
+        </h2>
+        <p>
+          At the heart of our company's business is our commitment to Corporate
+          Social Responsibility. Our CSR interventions have a positive impact on
+          society, environment, and all stakeholders. Our CSR projects focus on
+          strengthening communities by targeting the fundamental drivers of
+          long-term development such as education, health, environmental
+          protection, greening and beautification.
+        </p>
+      </div>
       <div class="container">
         {slide?.sanitizedEntries?.map((slide) => {
           return (
             <div class="box">
               <img src={slide.image} />
-              {/* <div className="info">
-                <p className="money">45M</p>
-                <p className="cause">For cancer</p>
-              </div> */}
-              <span>{slide.title}</span>
+              <div className="info">
+                <p className="cause">{slide?.description}</p>
+                <p className="money">{slide?.title}</p>
+              </div>
+              {/* <span>{slide.title}</span> */}
             </div>
           );
         })}

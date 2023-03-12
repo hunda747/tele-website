@@ -15,9 +15,12 @@ import {
   Twitter,
   Shop,
   Search,
+  MenuBook,
+  MenuOutlined,
 } from "@mui/icons-material";
 import { MenuItem, Select } from "@mui/material";
 import makeStyles from "@material-ui/styles/makeStyles";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   popOverRoot: {
@@ -28,7 +31,7 @@ const useStyles = makeStyles({
 export default function Navbar(params) {
   let currentlyHovering = false;
   const styles = useStyles();
-
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   function handleClick(event) {
@@ -149,15 +152,25 @@ export default function Navbar(params) {
         </div>
         <div className="break"></div>
         <div className="bottom wrapper">
-          <div className="left">
+          <div
+            className="left"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <img src={logo} alt="Ethio telecom" />
           </div>
           <div className="right">
+            <div className="mobileMenu">
+              <MenuOutlined />
+            </div>
             <ul className="menus">
               <li>telebirr</li>
-              <li className="nav_menu">Cloud solutions</li>
+              <li>Cloud solutions</li>
               <li>
-                <a href="">Online Services</a> <Submenu />{" "}
+                Online Services
+                {/* <Submenu />{" "} */}
               </li>
               <li>Personal</li>
               <li>Business</li>

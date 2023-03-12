@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./home.scss";
 
 import useContentful from "../../hooks/useContentful";
+import useTestimonial from "../../hooks/useTestimonial";
+import useStat from "../../hooks/useStat";
 
 import { Slideshow } from "../../component/home/slideshow/slideshow";
 import Blog from "../../component/home/Blog/blog";
@@ -21,6 +23,7 @@ import service2 from "../../assets/photo/service2.webp";
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
 import Images from "../../component/home/images/images";
 import Carousel from "../../component/home/carousel/carousel";
+import { useNavigate } from "react-router-dom";
 // import Tweets from "../../component/home/Tweets/tweets";
 
 const client = new ContentfulClient({
@@ -31,40 +34,52 @@ const client = new ContentfulClient({
 export default function Home(params) {
   const products = [
     {
-      icon: <Lightbulb />,
-      name: "Ethiotel Innovation",
+      icon: <Lightbulb fontSize="large" />,
+      name: "Innovation",
+      link: "/product/innovation",
     },
     {
-      icon: <SimCard />,
+      icon: <SimCard fontSize="large" />,
       name: "eSim",
+      link: "/product/esim",
     },
     {
-      icon: <AccountBox />,
+      icon: <AccountBox fontSize="large" />,
       name: "IAT",
+      link: "/",
     },
     {
-      icon: <Storage />,
+      icon: <Storage fontSize="large" />,
       name: "Ashamtele",
+      link: "/",
     },
     {
-      icon: <ShoppingCart />,
-      name: "telegebeya",
+      icon: <ShoppingCart fontSize="large" />,
+      name: "Telegebeya",
+      link: "/",
     },
     {
-      icon: <Warning />,
+      icon: <Warning fontSize="large" />,
       name: "Fraud Alert",
+      link: "/",
     },
   ];
   const [count, setCount] = useState(0);
-  const [blogs, setBlogs] = useState([]);
+  const [stat, setStat] = useState([]);
+  const [testimony, setTestimony] = useState([]);
   const { getBlogs } = useContentful();
+  const { getTestimonial } = useTestimonial();
+  const { getStats } = useStat();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getBlogs().then((response) => response && setBlogs(response));
+    getStats().then((response) => response && setStat(response));
+    getTestimonial().then((response) => response && setTestimony(response));
     // getAuthors().then((response) => response && setAuthors(response));
   }, []);
 
-  // console.log(blogs);
+  console.log(stat.sanitizedEntries);
   const test = [
     "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio corrupti sunt doloremque, laboriosam illo nemo earum itaque sed beatae blanditiis magni quos? Similique, aperiam nisi amet dolorum accusantium necessitatibus.",
     "Sit distinctio corrupti sunt doloremque, laboriosam illo nemo earum itaque sed beatae blanditiis magni quos? Similique, aperiam nisi amet dolorum accusantium necessitatibus.",
@@ -90,17 +105,25 @@ export default function Home(params) {
       <div className="">
         <div className="products">
           {products?.map((pro, index) => {
+            const link = pro.link;
             return (
-              <div className="card">
+              <div
+                className="card"
+                onClick={() => {
+                  navigate(`${link}`);
+                }}
+              >
                 <div className="icon">{pro.icon}</div>
                 <span>{pro.name}</span>
               </div>
             );
           })}
         </div>
-        <div className="service">
+        {/* <div className="service">
           <div className="">
-            <h2>Product & Services</h2>
+            <h2 className="headerTitle">
+              Product <span>&</span> Services{" "}
+            </h2>
             <div className="images">
               <div>
                 <img src={service1} alt="" />
@@ -110,14 +133,12 @@ export default function Home(params) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
-      <Images />
       <Blog />
+      <Images />
       <div className="statistic">
-        <h2 className="headerTitle">
-          Our <span>statistic</span>
-        </h2>
+        <h2 className="headerTitle">Our statistic</h2>
         <div className="stats">
           <div className="stat">
             <h3>
@@ -150,15 +171,18 @@ export default function Home(params) {
       <div className="testimonial">
         <div className="wrapper">
           <div className="header">
-            <h2>TESTIMONIAL</h2>
+            <h2 className="headerTitle">TESTIMONIAL</h2>
             <p className="colortext">What they say.</p>
           </div>
           <div className="testimonials">
-            {test.slice(0, 3).map((test) => {
+            {testimony?.sanitizedEntries?.slice(0, 3).map((test) => {
               return (
                 <div className="testimony">
-                  <p className="main">{test}</p>
-                  <h3 className="name colortext">Fasic K</h3>
+                  <p className="main">{test.description}</p>
+                  <div className="name">
+                    <img src={test.image} alt="H" />
+                    <h3 className="name colortext">{test.author}</h3>
+                  </div>
                 </div>
               );
             })}

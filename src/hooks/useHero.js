@@ -1,19 +1,19 @@
 import { createClient } from "contentful";
 
-const useContentful = () => {
+const useHero = () => {
   const client = createClient({
     space: "o6quhc28ezlz",
     accessToken: "NV-QvgZWq8aDVHmTslyXGZsdAYDd67bSDIcqU24V75A",
     host: "preview.contentful.com",
   });
-  const getBlogs = async () => {
+  const getHeros = async () => {
     try {
       const entries = await client.getEntries({
         // content_type: "statistics",
-        content_type: "blogs",
+        content_type: "heroImage",
         select: "fields",
       });
-      console.log(entries);
+      // console.log(entries);
 
       const sanitizedEntries = entries.items.map((item) => {
         // console.log(item);
@@ -26,11 +26,11 @@ const useContentful = () => {
 
       return { sanitizedEntries };
     } catch (error) {
-      console.log(`Error fetching blog ${error}`);
+      console.log(`Error fetching hero ${error}`);
     }
   };
 
-  return { getBlogs };
+  return { getHeros };
 };
 
-export default useContentful;
+export default useHero;
